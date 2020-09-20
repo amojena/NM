@@ -57,21 +57,18 @@ def shortest_path(G,i,j):
     # disconnected graph
     return "infinity"
 
-
-def c8():
-    print("Creating graph...")
+# Question 8.c
+def c8(graph=create_graph(1000, .1), filePath="avg_shortest_path.txt", maxNode = 999):
     n, p = 1000, .1
-    graph = create_graph(n, p)
-
-    filePath = "avg_shortest_path.txt"
     outputFile = open(filePath, "w")
     
     total = 0
     print("Finding shortest paths...")
-    for _ in range(1000):
-        i, j = random.randint(0, 999), random.randint(0, 999)
+    for r in range(1000):
+        print("Round {}...".format(r))
+        i, j = random.randint(0, maxNode), random.randint(0, maxNode)
         while i == j:
-            j = random.randint(0, 999)
+            j = random.randint(0, maxNode)
     
         pathLength = shortest_path(graph, i, j)
         outputFile.write("({}, {}, {})\n".format(i, j, pathLength))
@@ -81,8 +78,29 @@ def c8():
     outputFile.close()
     print("Graph with {} nodes connected with p = {} has average path length of {}".format(n, p, total/1000))
 
+# Question 8.d
+def plot():
+    import matplotlib.pyplot as plt
+
+    with open("varying_p.txt", "r") as f:
+        lines = f.readlines()
+    
+    x, y = [], []
+    for line in lines:
+        l = line.split(",")
+        x += [ float(l[0]) ]
+        y += [ float(l[1]) ]
+    
+
+    plt.title("Average path length of 1000-node graph with varying p")
+    plt.xlabel("p")
+    plt.ylabel("Average path length")
+    plt.plot(x, y, '-o')
+    plt.show()
+
 def varyingPs():
-    ps = [.01, .02, .03, .04, .05, .1, .15, .2, .25, .3, .35, .4, .45, .5]
+    
+    ps = [.01 * i for i in range(1,10)] + [.05 * i for i in range(2, 10)]
     
     n = 1000
     filePath = "varying_p.txt"
@@ -104,9 +122,27 @@ def varyingPs():
     
     print("Closing output file...")
     outputFile.close()
-        
+    plot()
 
+
+# Question 9.a
+def createFBGraph():
+    with open("facebook_combined.txt") as f:
+        lines = f.readlines()
+    
+    graph = dict()
+
+    for line in lines:
+        nodes = line.split()
+        n1, n2 = int(nodes[0]), int(nodes[1])
+
+        add_node(graph, n1)
+        add_node(graph, n2)
+
+        add_edge(graph, n1, n2)
+    
+    return graph
+    
 if __name__ == "__main__":
-    # pass
-    c8()
-    # varyingPs()
+    g = createFBGraph()
+    c8(g, "fb_shortest_path.txt", 4038)
