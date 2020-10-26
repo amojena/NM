@@ -1,5 +1,6 @@
 # include any code you need for your assignment in this file or in auxiliary
 # files that can be imported here.
+import graphs
 
 # 9 (a)
 # implement an algorithm that computes the maximum flow in a graph G
