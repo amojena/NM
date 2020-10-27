@@ -22,7 +22,7 @@ def create_fb_graph(S, filename="facebook_combined.txt"):
 
     for line in lines:
         nodes = line.split()
-        n1, n2 = int(nodes[0]), int(nodes[1])
+        n1, n2 = nodes[0], nodes[1]
 
         add_node(graph, n1, S)
         add_node(graph, n2, S)
@@ -33,4 +33,13 @@ def create_fb_graph(S, filename="facebook_combined.txt"):
     return graph
 
 
+def create_graph(network, S):
+    graph = dict()
+    for node, neighbors in network.items():
+        add_node(graph, node, S)
 
+        for neighbor in neighbors:
+            add_node(graph, neighbor, S)
+            add_edge(graph, node, neighbor)
+
+    return graph
