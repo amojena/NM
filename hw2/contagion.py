@@ -2,6 +2,7 @@
 # files that can be imported here.
 from graphs import create_fb_graph, create_graph
 from random import randint
+from matplotlib import pyplot as plt
 
 # 8 (a)
 # implement an algorithm that given a graph G, set of adopters S,
@@ -19,13 +20,13 @@ def BRD(G, status, neighbors, q):
     
 def contagion_brd(G, S, q):
     changes = 0
-    node_change = {node : False for node in G.keys()}
+    node_change = {node : True if node in S else False for node in G.keys()}
 
     while (True):
         change = False
         for node, vals in G.items():
             # Early adopter, cannot change more than once during BRD
-            if (node in S or node_change[node]):
+            if (node_change[node]):
                 continue
 
             prev_status, neighbors = vals[0], vals[1]
@@ -128,7 +129,8 @@ def graph_cascaded(graph):
 def q8b():
     total_changes = 0
     q = 0.1
-
+    full_cascades = 0
+    avg_no_cascade = []
     change_record = []
     for i in range(100):
         if (i % 10 == 0):
@@ -139,18 +141,29 @@ def q8b():
         g2, changes = contagion_brd(g, S, q)
         total_changes += changes
         cascaded = graph_cascaded(g2)
-        change_record += [(changes, cascaded)]
     
+        if (cascaded):
+            full_cascades += 1
+        else:
+            avg_no_cascade += [changes]
+    
+    print(f"Full cascades: {full_cascades}")
     print(f"\nAverage amount of node switches: {total_changes/100}")
-    print("\nChanges in each iteration:")
-    print(change_record)
+    print(f"Average of infected nodes when there is no full cascade: {sum(avg_no_cascade)/len(avg_no_cascade)}")
+
+    
+
+
+
+
 
 def q8c():
     qs = [0.05 * i for i in range(11)]
     amts_adopters = [10 * i for i in range(26)]
 
-    change_record = []
     total_full_cascades = 0
+    averages = []
+    full_cascades = []
     for q in qs:
         total_changes = 0
         print(f"Avg infection rate for q={q}: ", end="")
@@ -160,11 +173,36 @@ def q8c():
             g2, changes = contagion_brd(g, S, q)
             total_changes += changes
             cascaded = graph_cascaded(g2)
-            if cascaded:
+            if amt_adopters > 0 and cascaded:
                 total_full_cascades += 1
-            change_record += [(changes, cascaded)]
-        print(total_changes/25)
+                full_cascades += [(q, amt_adopters)] # for scatterplot
+
+        averages += [total_changes/25] # for line graph
+
+
+        print(averages[-1])
     
+    
+    plt.subplot(1, 2, 1)
+    plt.title('Average infection rate per q')
+    plt.plot(qs, averages)
+    plt.grid(True)
+    plt.xlabel('q')
+    plt.ylabel('Infection rate')
+
+    plt.subplot(1, 2, 2)
+    plt.title('Adoption threshold and initial adopters of full cascades')
+    qq, adopters = [fc[0] for fc in full_cascades], [fc[1] for fc in full_cascades]
+    plt.scatter(qq, adopters)
+    plt.grid(True)
+    plt.xlabel('q')
+    plt.xlim(0, 0.5)
+    plt.ylabel('Number of initial Adopters')
+
+    plt.show()
+
+
+
     print(f"Full cascades: {total_full_cascades}")
 
 
@@ -172,5 +210,5 @@ def q8c():
 
 
 if __name__ == "__main__":
-    # q8b()
-    q8c()
+    q8b()
+    # q8c()
