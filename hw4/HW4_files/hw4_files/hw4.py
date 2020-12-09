@@ -14,7 +14,7 @@ class DirectedGraph:
     def __init__(self,number_of_nodes):
         self.num_of_nodes = number_of_nodes
         self.graph = dict()
-        self.outedges = dict()
+        self.outedges = {node : 1 for node in range(self.num_of_nodes)}
     
     def add_edge(self, origin_node, destination_node):
         if self.check_edge(origin_node, destination_node):
@@ -22,7 +22,6 @@ class DirectedGraph:
 
         if self.graph.get(origin_node) is None:
             self.graph[origin_node] = [destination_node]
-            self.outedges[origin_node] = 1
         else:
             self.graph[origin_node].append(destination_node)
             self.outedges[origin_node] += 1
@@ -52,7 +51,7 @@ def scaled_page_rank(graph, num_iter, eps = 1/7.0):
     for node in graph.graph.keys():
         for _ in range(num_iter):
             #𝜖 n + (1 − 𝜖)∑ (v′,v)∈E Score(v′) out-deg(v′)
-            nodeWeights[node] = en + (1-eps) * nodeWeights[node] * (1+ graph.outedges[node])
+            nodeWeights[node] = en + (1-eps) * nodeWeights[node] * graph.outedges[node]
     return nodeWeights
 
 def graph_15_1_left():
@@ -135,38 +134,34 @@ def facebook_graph(filename = "facebook_combined.txt"):
 
 
 
-# The code necessary for your measurements for question 8b should go in this function.
+# The code necessary for your measurements for question 7b should go in this function.
 # Please COMMENT THE LAST LINE OUT WHEN YOU SUBMIT (as it will be graded by hand and we do not want it to interfere
 # with the automatic grader).
 def question8b():
-    pass
-#question8b()
+    
+    fb_graph = facebook_graph()
+
+    for n in range(10, 21):
+        nw = scaled_page_rank(fb_graph, n)
+        weights = [(node, fb_graph.outedges[node], weight) for node, weight in nw.items()]
+        weights = sorted(weights, key=lambda x: x[2], reverse=True)
+        ws = [f"{w[0]},{w[1]},{w[2]}\n" for w in weights]
+
+        with open(f"fb_{n}.txt", 'w') as fi:
+            fi.writelines(ws)
 
 #6a
-g15 = graph_15_1_left()
-print(g15.graph)
-nw = scaled_page_rank(g15, 10)
-print(nw)
+# g15 = graph_15_1_left()
+# print(g15.graph)
+# nw = scaled_page_rank(g15, 10)
+# print(nw)
 
-print()
+# print()
 
-g15 = graph_15_1_right()
-print(g15.graph)
-nw = scaled_page_rank(g15, 10)
-print(nw)
-
-print()
+# g15 = graph_15_1_right()
+# print(g15.graph)
+# nw = scaled_page_rank(g15, 10)
+# print(nw)
 
 # 7b
-fb_graph = facebook_graph()
-
-for n in range(10, 16):
-    nw = scaled_page_rank(fb_graph, 10)
-    weights = [(node, fb_graph.outedges[node], weight) for node, weight in nw.items()]
-    weights = sorted(weights, key=lambda x: x[2], reverse=True)
-    ws = [f"{w[0]},{w[1]},{w[2]}\n" for w in weights]
-
-    with open(f"fb_{n}.txt", 'w') as fi:
-        fi.writelines(ws)
-    
-
+question8b()
