@@ -46,12 +46,17 @@ def scaled_page_rank(graph, num_iter, eps = 1/7.0):
     In the case of 0 iterations, all nodes should have weight 1/number_of_nodes'''  
 
     nodeWeights = {node : 1 / graph.num_of_nodes for node in range(graph.num_of_nodes)}
-    en = eps * graph.num_of_nodes
+    en = eps / graph.num_of_nodes
 
-    for node in graph.graph.keys():
-        for _ in range(num_iter):
-            #𝜖 n + (1 − 𝜖)∑ (v′,v)∈E Score(v′) out-deg(v′)
-            nodeWeights[node] = en + (1-eps) * nodeWeights[node] * graph.outedges[node]
+
+    for _ in range(num_iter):
+        for node in graph.graph.keys():
+            new_score = 0
+            for edge in graph.edges_from(node):
+                #𝜖 n + (1 − 𝜖)∑ (v′,v)∈E Score(v′) out-deg(v′)
+                new_score +=  nodeWeights[edge] / graph.outedges[edge]
+            nodeWeights[node] = en + (1-eps) * new_score
+            
     return nodeWeights
 
 def graph_15_1_left():
@@ -140,15 +145,18 @@ def facebook_graph(filename = "facebook_combined.txt"):
 def question8b():
     
     fb_graph = facebook_graph()
-
     for n in range(10, 21):
+        w_sum = 0
         nw = scaled_page_rank(fb_graph, n)
         weights = [(node, fb_graph.outedges[node], weight) for node, weight in nw.items()]
         weights = sorted(weights, key=lambda x: x[2], reverse=True)
         ws = [f"{w[0]},{w[1]},{w[2]}\n" for w in weights]
+        for w in weights:
+            w_sum += w[2]
 
         with open(f"fb_{n}.txt", 'w') as fi:
             fi.writelines(ws)
+        print(n, w_sum)
 
 #6a
 # g15 = graph_15_1_left()
