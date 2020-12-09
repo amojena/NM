@@ -14,6 +14,7 @@ class DirectedGraph:
     def __init__(self,number_of_nodes):
         self.num_of_nodes = number_of_nodes
         self.graph = dict()
+        self.outedges = dict()
     
     def add_edge(self, origin_node, destination_node):
         if self.check_edge(origin_node, destination_node):
@@ -21,8 +22,10 @@ class DirectedGraph:
 
         if self.graph.get(origin_node) is None:
             self.graph[origin_node] = [destination_node]
+            self.outedges[origin_node] = 1
         else:
             self.graph[origin_node].append(destination_node)
+            self.outedges[origin_node] += 1
     
     def edges_from(self, origin_node):
         ''' This method shold return a list of all the nodes u such that the edge (origin_node,u) is 
@@ -32,10 +35,7 @@ class DirectedGraph:
     def check_edge(self, origin_node, destination_node):
         ''' This method should return true is there is an edge between origin_node and destination_node
         and destination_node, and false otherwise'''
-        if self.graph.get(origin_node) is None:
-            return False
-        else:
-            return destination_node in self.graph[origin_node]
+        return False if self.graph.get(origin_node) is None else destination_node in self.graph[origin_node]
     
     def number_of_nodes(self):
         ''' This method should return the number of nodes in the graph'''
@@ -44,8 +44,16 @@ class DirectedGraph:
 def scaled_page_rank(graph, num_iter, eps = 1/7.0):
     ''' This method, given a directed graph, should run the epsilon-scaled page-rank
     algorithm for num-iter iterations and return a mapping (dictionary) between a node and its weight. 
-    In the case of 0 iterations, all nodes should have weight 1/number_of_nodes'''    
-    pass
+    In the case of 0 iterations, all nodes should have weight 1/number_of_nodes'''  
+
+    nodeWeights = {node : 1 / graph.num_of_nodes for node in range(graph.num_of_nodes)}
+    en = eps * graph.num_of_nodes
+
+    for node in graph.graph.keys():
+        for _ in range(num_iter):
+            #𝜖 n + (1 − 𝜖)∑ (v′,v)∈E Score(v′) out-deg(v′)
+            nodeWeights[node] = en + (1-eps) * nodeWeights[node] * (1+ graph.outedges[node])
+    return nodeWeights
 
 def graph_15_1_left():
     ''' This method, should construct and return a DirectedGraph encoding the left example in fig 15.1
@@ -94,9 +102,9 @@ def extra_graph_1():
     return ex_g_1
     
 
-# This dictionary should contain the expected weights for each node when running the scaled page rank on the extra_graph_1 output
+# This dictionary should contain the expected nodeWeights for each node when running the scaled page rank on the extra_graph_1 output
 # with epsilon = 0.07 and num_iter = 20.
-extra_graph_1_weights = {1 : 0, 2: 0, 3 : 0, 4: 0, 5 : 0, 6: 0, 7 : 0, 8: 0, 9 : 0}
+extra_graph_1_nodeWeights = {1 : 0, 2: 0, 3 : 0, 4: 0, 5 : 0, 6: 0, 7 : 0, 8: 0, 9 : 0}
 
 def extra_graph_2():
     ''' This method, should construct and return a DirectedGraph of your choice with at least 10 nodes'''    
@@ -107,9 +115,9 @@ def extra_graph_2():
     
     return ex_g_2
 
-# This dictionary should contain the expected weights for each node when running the scaled page rank on the extra_graph_2 output
+# This dictionary should contain the expected nodeWeights for each node when running the scaled page rank on the extra_graph_2 output
 # with epsilon = 0.07 and num_iter = 20.
-extra_graph_2_weights = {1 : 0, 2: 0, 3 : 0, 4: 0, 5 : 0, 6: 0, 7 : 0, 8: 0, 9 : 0}
+extra_graph_2_nodeWeights = {1 : 0, 2: 0, 3 : 0, 4: 0, 5 : 0, 6: 0, 7 : 0, 8: 0, 9 : 0}
 
 
 def facebook_graph(filename = "facebook_combined.txt"):
@@ -122,7 +130,7 @@ def facebook_graph(filename = "facebook_combined.txt"):
     for friendship in friendships:
         f1, f2 = friendship.split()
         fb_graph.add_edge(int(f1), int(f2))
-    
+        fb_graph.add_edge(int(f2), int(f1))
     return fb_graph
 
 
@@ -133,3 +141,32 @@ def facebook_graph(filename = "facebook_combined.txt"):
 def question8b():
     pass
 #question8b()
+
+#6a
+g15 = graph_15_1_left()
+print(g15.graph)
+nw = scaled_page_rank(g15, 10)
+print(nw)
+
+print()
+
+g15 = graph_15_1_right()
+print(g15.graph)
+nw = scaled_page_rank(g15, 10)
+print(nw)
+
+print()
+
+# 7b
+fb_graph = facebook_graph()
+
+for n in range(10, 16):
+    nw = scaled_page_rank(fb_graph, 10)
+    weights = [(node, fb_graph.outedges[node], weight) for node, weight in nw.items()]
+    weights = sorted(weights, key=lambda x: x[2], reverse=True)
+    ws = [f"{w[0]},{w[1]},{w[2]}\n" for w in weights]
+
+    with open(f"fb_{n}.txt", 'w') as fi:
+        fi.writelines(ws)
+    
+
