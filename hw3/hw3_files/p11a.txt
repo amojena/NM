@@ -1,0 +1,21 @@
+Test 1:
+VCG: 5 drivers, 5 riders
+Prices:  [0, 5, 0, 3, 9] , Matches:  [6, 7, 8, 10, 9]
+Matched (0, 6) - allocation: -1
+Matched (1, 7) - allocation: 5
+Matched (2, 8) - allocation: -2
+Matched (3, 10) - allocation: 1
+Matched (4, 9) - allocation: 18
+----------
+
+Test 2:
+VCG: 10 drivers, 8 riders
+Prices:  [8, 7, 6, 0, 2, 12, 10, 2, 0, 22] , Matches:  [11, 14, 13, 12, -1, 15, 18, 16, -1, 17]
+Matched (0, 11) - allocation: 1
+Matched (1, 14) - allocation: -1
+Matched (2, 13) - allocation: 0
+Matched (3, 12) - allocation: 8
+Matched (5, 15) - allocation: 15
+Matched (6, 18) - allocation: 3
+Matched (7, 16) - allocation: -13
+Matched (9, 17) - allocation: 6

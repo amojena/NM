@@ -1,0 +1,294 @@
+VCG: 10 drivers, 10 riders
+Prices:  [10, 3, 0, 0, 7, 0, 4, 9, 1, 102] , Matches:  [14, 11, -1, -1, 13, -1, 16, -1, -1, 12]
+Matched (0, 14) - allocation: 77
+Matched (1, 11) - allocation: 82
+Matched (4, 13) - allocation: 84
+Matched (6, 16) - allocation: 85
+Matched (9, 12) - allocation: 76
+
+
+VCG: 10 drivers, 10 riders
+Prices:  [3, 7, 0, 7, 8, 3, 14, 8, 20, 8] , Matches:  [16, 11, 18, 17, 19, 14, 12, 13, 15, 20]
+Matched (0, 16) - allocation: 87
+Matched (1, 11) - allocation: 78
+Matched (2, 18) - allocation: 88
+Matched (3, 17) - allocation: 83
+Matched (4, 19) - allocation: 82
+Matched (5, 14) - allocation: 89
+Matched (6, 12) - allocation: 75
+Matched (7, 13) - allocation: 84
+Matched (8, 15) - allocation: 72
+Matched (9, 20) - allocation: 80
+
+
+VCG: 10 drivers, 10 riders
+Prices:  [5, 9, 2, 13, 2, 0, 0, 0, 0, 41] , Matches:  [12, 13, 18, 14, 15, 19, 17, -1, -1, 16]
+Matched (0, 12) - allocation: 83
+Matched (1, 13) - allocation: 70
+Matched (2, 18) - allocation: 87
+Matched (3, 14) - allocation: 76
+Matched (4, 15) - allocation: 80
+Matched (5, 19) - allocation: 89
+Matched (6, 17) - allocation: 86
+Matched (9, 16) - allocation: 77
+
+
+VCG: 10 drivers, 10 riders
+Prices:  [0, 4, 0, 5, 3, 6, 13, 4, 11, 30] , Matches:  [17, 14, 11, 15, 12, 16, 13, 18, 19, 20]
+Matched (0, 17) - allocation: 78
+Matched (1, 14) - allocation: 80
+Matched (2, 11) - allocation: 86
+Matched (3, 15) - allocation: 77
+Matched (4, 12) - allocation: 84
+Matched (5, 16) - allocation: 82
+Matched (6, 13) - allocation: 73
+Matched (7, 18) - allocation: 84
+Matched (8, 19) - allocation: 79
+Matched (9, 20) - allocation: 73
+
+
+VCG: 10 drivers, 10 riders
+Prices:  [14, 0, 7, 6, 8, 5, 8, 18, 8, 45] , Matches:  [14, 16, 11, 18, -1, -1, -1, 15, -1, 13]
+Matched (0, 14) - allocation: 76
+Matched (1, 16) - allocation: 90
+Matched (2, 11) - allocation: 83
+Matched (3, 18) - allocation: 83
+Matched (7, 15) - allocation: 73
+Matched (9, 13) - allocation: 89
+
+
+VCG: 10 drivers, 10 riders
+Prices:  [12, 1, 0, 2, 0, 4, 8, 3, 3, 8] , Matches:  [16, 11, 15, 12, 17, 18, 19, 20, 13, 14]
+Matched (0, 16) - allocation: 72
+Matched (1, 11) - allocation: 77
+Matched (2, 15) - allocation: 79
+Matched (3, 12) - allocation: 81
+Matched (4, 17) - allocation: 85
+Matched (5, 18) - allocation: 85
+Matched (6, 19) - allocation: 86
+Matched (7, 20) - allocation: 74
+Matched (8, 13) - allocation: 85
+Matched (9, 14) - allocation: 83
+
+
+VCG: 10 drivers, 10 riders
+Prices:  [1, 7, 10, 13, 7, 11, 0, 7, 0, 19] , Matches:  [14, 12, 11, 18, 13, 15, 19, 16, 20, 17]
+Matched (0, 14) - allocation: 85
+Matched (1, 12) - allocation: 84
+Matched (2, 11) - allocation: 80
+Matched (3, 18) - allocation: 75
+Matched (4, 13) - allocation: 83
+Matched (5, 15) - allocation: 87
+Matched (6, 19) - allocation: 92
+Matched (7, 16) - allocation: 71
+Matched (8, 20) - allocation: 72
+Matched (9, 17) - allocation: 79
+
+
+VCG: 10 drivers, 10 riders
+Prices:  [3, 14, 5, 1, 0, 0, 1, 0, 2, 34] , Matches:  [13, 15, 16, 20, 11, -1, 14, -1, 19, 17]
+Matched (0, 13) - allocation: 84
+Matched (1, 15) - allocation: 73
+Matched (2, 16) - allocation: 80
+Matched (3, 20) - allocation: 78
+Matched (4, 11) - allocation: 84
+Matched (6, 14) - allocation: 86
+Matched (8, 19) - allocation: 82
+Matched (9, 17) - allocation: 86
+
+
+VCG: 10 drivers, 10 riders
+Prices:  [5, 0, 9, 3, 5, 5, 3, 3, 7, 35] , Matches:  [13, 14, 20, -1, -1, 18, 17, -1, 11, 19]
+Matched (0, 13) - allocation: 83
+Matched (1, 14) - allocation: 84
+Matched (2, 20) - allocation: 86
+Matched (5, 18) - allocation: 85
+Matched (6, 17) - allocation: 87
+Matched (8, 11) - allocation: 74
+Matched (9, 19) - allocation: 83
+
+
+VCG: 10 drivers, 10 riders
+Prices:  [1, 0, 0, 6, 1, 4, 0, 2, 0, 45] , Matches:  [13, 11, 14, 12, 17, 18, 20, -1, -1, 15]
+Matched (0, 13) - allocation: 82
+Matched (1, 11) - allocation: 85
+Matched (2, 14) - allocation: 80
+Matched (3, 12) - allocation: 73
+Matched (4, 17) - allocation: 83
+Matched (5, 18) - allocation: 77
+Matched (6, 20) - allocation: 77
+Matched (9, 15) - allocation: 79
+
+
+VCG: 20 drivers, 5 riders
+Prices:  [3, 5, 4, 5, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] , Matches:  [22, 23, 24, 21, -1, 25, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
+Matched (0, 22) - allocation: 93
+Matched (1, 23) - allocation: 84
+Matched (2, 24) - allocation: 90
+Matched (3, 21) - allocation: 74
+Matched (5, 25) - allocation: 88
+
+
+VCG: 20 drivers, 5 riders
+Prices:  [7, 0, 6, 0, 0, 4, 1, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0] , Matches:  [24, -1, 21, -1, -1, 22, 23, -1, -1, -1, -1, -1, -1, 25, -1, -1, -1, -1, -1, -1]
+Matched (0, 24) - allocation: 76
+Matched (2, 21) - allocation: 76
+Matched (5, 22) - allocation: 79
+Matched (6, 23) - allocation: 76
+Matched (13, 25) - allocation: 80
+
+
+VCG: 20 drivers, 5 riders
+Prices:  [1, 5, 4, 5, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] , Matches:  [25, 22, 24, 21, -1, -1, 23, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
+Matched (0, 25) - allocation: 85
+Matched (1, 22) - allocation: 73
+Matched (2, 24) - allocation: 75
+Matched (3, 21) - allocation: 74
+Matched (6, 23) - allocation: 85
+
+
+VCG: 20 drivers, 5 riders
+Prices:  [8, 1, 8, 6, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] , Matches:  [22, 23, 24, 21, 25, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
+Matched (0, 22) - allocation: 84
+Matched (1, 23) - allocation: 88
+Matched (2, 24) - allocation: 80
+Matched (3, 21) - allocation: 80
+Matched (4, 25) - allocation: 76
+
+
+VCG: 20 drivers, 5 riders
+Prices:  [2, 4, 2, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] , Matches:  [21, 23, 25, -1, -1, -1, -1, 24, -1, -1, -1, -1, 22, -1, -1, -1, -1, -1, -1, -1]
+Matched (0, 21) - allocation: 83
+Matched (1, 23) - allocation: 80
+Matched (2, 25) - allocation: 71
+Matched (7, 24) - allocation: 81
+Matched (12, 22) - allocation: 80
+
+
+VCG: 20 drivers, 5 riders
+Prices:  [1, 5, 0, 0, 0, 0, 4, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0] , Matches:  [22, 24, -1, -1, 21, -1, 25, -1, -1, -1, 23, -1, -1, -1, -1, -1, -1, -1, -1, -1]
+Matched (0, 22) - allocation: 64
+Matched (1, 24) - allocation: 70
+Matched (4, 21) - allocation: 95
+Matched (6, 25) - allocation: 91
+Matched (10, 23) - allocation: 88
+
+
+VCG: 20 drivers, 5 riders
+Prices:  [7, 8, 1, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] , Matches:  [22, 21, 24, -1, -1, 25, 23, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
+Matched (0, 22) - allocation: 81
+Matched (1, 21) - allocation: 78
+Matched (2, 24) - allocation: 73
+Matched (5, 25) - allocation: 84
+Matched (6, 23) - allocation: 92
+
+
+VCG: 20 drivers, 5 riders
+Prices:  [3, 3, 1, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] , Matches:  [22, 23, 24, 25, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 21, -1, -1]
+Matched (0, 22) - allocation: 61
+Matched (1, 23) - allocation: 66
+Matched (2, 24) - allocation: 72
+Matched (3, 25) - allocation: 71
+Matched (17, 21) - allocation: 81
+
+
+VCG: 20 drivers, 5 riders
+Prices:  [6, 1, 1, 0, 1, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 289] , Matches:  [23, 21, 24, -1, -1, -1, -1, -1, -1, -1, 22, -1, -1, -1, -1, -1, -1, -1, -1, 25]
+Matched (0, 23) - allocation: 66
+Matched (1, 21) - allocation: 80
+Matched (2, 24) - allocation: 79
+Matched (10, 22) - allocation: 80
+Matched (19, 25) - allocation: 91
+
+
+VCG: 20 drivers, 5 riders
+Prices:  [3, 1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 3, 0, 0, 0, 0] , Matches:  [21, 24, 22, -1, -1, -1, -1, -1, -1, -1, -1, 25, -1, -1, -1, 23, -1, -1, -1, -1]
+Matched (0, 21) - allocation: 90
+Matched (1, 24) - allocation: 78
+Matched (2, 22) - allocation: 77
+Matched (11, 25) - allocation: 90
+Matched (15, 23) - allocation: 84
+
+
+VCG: 5 drivers, 20 riders
+Prices:  [0, 23, 21, 22, 32] , Matches:  [7, 8, -1, -1, 6]
+Matched (0, 7) - allocation: 58
+Matched (1, 8) - allocation: 65
+Matched (4, 6) - allocation: 84
+
+
+VCG: 5 drivers, 20 riders
+Prices:  [1, 0, 13, 16, 0] , Matches:  [7, 6, 9, 8, 10]
+Matched (0, 7) - allocation: 78
+Matched (1, 6) - allocation: 83
+Matched (2, 9) - allocation: 67
+Matched (3, 8) - allocation: 67
+Matched (4, 10) - allocation: 90
+
+
+VCG: 5 drivers, 20 riders
+Prices:  [0, 12, 0, 54, 0] , Matches:  [9, -1, 6, 7, -1]
+Matched (0, 9) - allocation: 88
+Matched (2, 6) - allocation: 85
+Matched (3, 7) - allocation: 45
+
+
+VCG: 5 drivers, 20 riders
+Prices:  [0, 13, 21, 32, 90] , Matches:  [6, 10, 7, 8, 9]
+Matched (0, 6) - allocation: 80
+Matched (1, 10) - allocation: 81
+Matched (2, 7) - allocation: 67
+Matched (3, 8) - allocation: 58
+Matched (4, 9) - allocation: 51
+
+
+VCG: 5 drivers, 20 riders
+Prices:  [5, 0, 0, 18, 0] , Matches:  [7, 8, 6, 9, 10]
+Matched (0, 7) - allocation: 64
+Matched (1, 8) - allocation: 73
+Matched (2, 6) - allocation: 77
+Matched (3, 9) - allocation: 58
+Matched (4, 10) - allocation: 84
+
+
+VCG: 5 drivers, 20 riders
+Prices:  [0, 23, 3, 0, 21] , Matches:  [6, 7, 9, 8, 10]
+Matched (0, 6) - allocation: 77
+Matched (1, 7) - allocation: 54
+Matched (2, 9) - allocation: 70
+Matched (3, 8) - allocation: 78
+Matched (4, 10) - allocation: 67
+
+
+VCG: 5 drivers, 20 riders
+Prices:  [31, 0, 6, 2, 0] , Matches:  [7, 8, 9, 10, 6]
+Matched (0, 7) - allocation: 50
+Matched (1, 8) - allocation: 78
+Matched (2, 9) - allocation: 74
+Matched (3, 10) - allocation: 79
+Matched (4, 6) - allocation: 79
+
+
+VCG: 5 drivers, 20 riders
+Prices:  [0, 8, 18, 1, 0] , Matches:  [7, 8, 9, 10, 6]
+Matched (0, 7) - allocation: 63
+Matched (1, 8) - allocation: 76
+Matched (2, 9) - allocation: 53
+Matched (3, 10) - allocation: 78
+Matched (4, 6) - allocation: 74
+
+
+VCG: 5 drivers, 20 riders
+Prices:  [7, 15, 0, 28, 72] , Matches:  [7, 9, -1, -1, 6]
+Matched (0, 7) - allocation: 70
+Matched (1, 9) - allocation: 51
+Matched (4, 6) - allocation: 65
+
+
+VCG: 5 drivers, 20 riders
+Prices:  [29, 0, 11, 4, 0] , Matches:  [6, 8, 9, 10, 7]
+Matched (0, 6) - allocation: 59
+Matched (1, 8) - allocation: 76
+Matched (2, 9) - allocation: 83
+Matched (3, 10) - allocation: 69
+Matched (4, 7) - allocation: 88
