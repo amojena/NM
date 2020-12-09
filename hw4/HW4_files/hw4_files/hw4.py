@@ -1,10 +1,12 @@
 # Please enter here the netids of all memebers of your group (yourself included.)
-authors = ['AM3238']
+authors = ['am3238']
 
 # Which version of python are you using? python 2 or python 3? 
 python_version = "3"
 
 # Important: You are NOT allowed to modify the method signatures (i.e. the arguments and return types each function takes).
+from matplotlib import pyplot as plt
+import networkx as nx
 
 # Implement the methods in this class as appropriate. Feel free to add other methods
 # and attributes as needed. 
@@ -50,7 +52,7 @@ def scaled_page_rank(graph, num_iter, eps = 1/7.0):
         for node in graph.graph.keys():
             new_score = 0
             for edge in graph.edges_from(node):
-                #𝜖 n + (1 − 𝜖)∑ (v′,v)∈E Score(v′)/ out-deg(v′)
+                #𝜖/n + (1 − 𝜖)∑ (v′,v)∈E Score(v′)/out-deg(v′)
                 new_score +=  nodeWeights[edge] / graph.outedges[edge]
             nodeWeights[node] = (eps / graph.num_of_nodes) + (1-eps) * new_score
             
@@ -146,10 +148,52 @@ def question8b():
     for n in range(10, 21):
         nw = scaled_page_rank(fb_graph, n)
         weights = [(node, fb_graph.outedges[node], weight) for node, weight in nw.items()]
-        weights = sorted(weights, key=lambda x: x[2], reverse=True)
+        weights = sorted(weights, key=lambda x: x[2])
+
+    # outputToFile(weights)
+    # weightScatterPlot(weights)
+    # makeNXGraph(fb_graph, weights)
+    return nw
+
+def outputToFile(weights):
         ws = [f"{w[0]}, {w[1]}, {w[2]}\n" for w in weights]
         with open(f"fb_{n}.txt", 'w') as fi:
             fi.writelines(ws)
+
+
+def weightScatterPlot(weights):
+    x, y = [], []
+    for i, w in enumerate(weights):
+        x.append(i)
+        y.append(w[1])
+    
+    plt.scatter(x[: -100], y[: -100])
+    plt.scatter(x[-100:], y[-100:], c="tab:red")
+    plt.grid()
+    plt.ylabel('Out-degree')
+    plt.xlabel('Rank')
+    plt.title('Relationship between rank and out-deg(v)')
+    plt.savefig('out_weight.png')
+
+def makeNXGraph(graph, weights):
+    G = nx.Graph()
+    G.add_nodes_from([i for i in range(graph.num_of_nodes)])
+    colors = ["b"] * 4039
+
+    for i, w in enumerate(weights):
+        if i > 3938:
+            colors[w[0]] = "y"
+        elif i < 300:
+            colors[w[0]] = "r"
+
+    for node, edges in graph.graph.items():
+        for edge in edges:
+            G.add_edge(node, edge)
+
+    plt.style.use('dark_background')
+    nx.draw(G, width=.05, node_size=5, node_color = colors, edge_color="w", with_labels=False)
+    plt.savefig("graph.png")
+
 
 #6a
 # g15 = graph_15_1_left()
