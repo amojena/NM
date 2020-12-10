@@ -209,4 +209,4 @@ def makeNXGraph(graph, weights):
 # print(nw)
 
 # 7b
-question8b()
+# question8b()
