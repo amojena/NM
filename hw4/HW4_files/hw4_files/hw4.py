@@ -51,11 +51,12 @@ def scaled_page_rank(graph, num_iter, eps = 1/7.0):
     for _ in range(num_iter):
         for node in graph.graph.keys():
             new_score = 0
-            for edge in graph.edges_from(node):
+            for edge in graph.graph[node]:
                 #𝜖/n + (1 − 𝜖)∑ (v′,v)∈E Score(v′)/out-deg(v′)
                 new_score +=  nodeWeights[edge] / graph.outedges[edge]
             nodeWeights[node] = (eps / graph.num_of_nodes) + (1-eps) * new_score
             
+    print(sum(nodeWeights.values()))
     return nodeWeights
 
 
@@ -149,15 +150,16 @@ def question8b():
         nw = scaled_page_rank(fb_graph, n)
         weights = [(node, fb_graph.outedges[node], weight) for node, weight in nw.items()]
         weights = sorted(weights, key=lambda x: x[2])
+        
 
-    # outputToFile(weights)
+        outputToFile(weights, f"fb_{n}.txt")
     # weightScatterPlot(weights)
-    # makeNXGraph(fb_graph, weights)
+    makeNXGraph(fb_graph, weights)
     return nw
 
-def outputToFile(weights):
+def outputToFile(weights, filename):
         ws = [f"{w[0]}, {w[1]}, {w[2]}\n" for w in weights]
-        with open(f"fb_{n}.txt", 'w') as fi:
+        with open(filename, 'w') as fi:
             fi.writelines(ws)
 
 
@@ -182,7 +184,7 @@ def makeNXGraph(graph, weights):
 
     for i, w in enumerate(weights):
         if i > 3938:
-            colors[w[0]] = "y"
+            colors[w[0]] = "c"
         elif i < 300:
             colors[w[0]] = "r"
 
@@ -190,8 +192,8 @@ def makeNXGraph(graph, weights):
         for edge in edges:
             G.add_edge(node, edge)
 
-    plt.style.use('dark_background')
-    nx.draw(G, width=.05, node_size=5, node_color = colors, edge_color="w", with_labels=False)
+    # plt.style.use('dark_background')
+    nx.draw(G, width=.05, node_size=5, node_color = colors, with_labels=False)
     plt.savefig("graph.png")
 
 
@@ -201,7 +203,7 @@ def makeNXGraph(graph, weights):
 # nw = scaled_page_rank(g15, 10)
 # print(nw)
 
-# print()
+# # print()
 
 # g15 = graph_15_1_right()
 # print(g15.graph)
@@ -209,4 +211,4 @@ def makeNXGraph(graph, weights):
 # print(nw)
 
 # 7b
-# question8b()
+question8b()
