@@ -7,6 +7,7 @@ python_version = "3"
 # Important: You are NOT allowed to modify the method signatures (i.e. the arguments and return types each function takes).
 from matplotlib import pyplot as plt
 import networkx as nx
+from collections import defaultdict
 
 # Implement the methods in this class as appropriate. Feel free to add other methods
 # and attributes as needed. 
@@ -17,6 +18,7 @@ class DirectedGraph:
         self.num_of_nodes = number_of_nodes
         self.graph = dict()
         self.outedges = {node : 1 for node in range(self.num_of_nodes)}
+        self.in_links = defaultdict(list)
     
     def add_edge(self, origin_node, destination_node):
         if self.check_edge(origin_node, destination_node):
@@ -27,6 +29,9 @@ class DirectedGraph:
         else:
             self.graph[origin_node].append(destination_node)
             self.outedges[origin_node] += 1
+        
+        if origin_node != destination_node:
+            self.in_links[destination_node].append(origin_node)
     
     def edges_from(self, origin_node):
         ''' This method shold return a list of all the nodes u such that the edge (origin_node,u) is 
@@ -42,19 +47,23 @@ class DirectedGraph:
         ''' This method should return the number of nodes in the graph'''
         return self.num_of_nodes
     
+    def in_link(self, destination_node):
+        return [node for node, edges in self.graph.items() if destination_node in edges]
+    
 def scaled_page_rank(graph, num_iter, eps = 1/7.0):
     ''' This method, given a directed graph, should run the epsilon-scaled page-rank
     algorithm for num-iter iterations and return a mapping (dictionary) between a node and its weight. 
     In the case of 0 iterations, all nodes should have weight 1/number_of_nodes'''  
 
-    nodeWeights = {node : 1 / graph.num_of_nodes for node in range(graph.num_of_nodes)}
+    nodeWeights = {node : 1 / graph.number_of_nodes() for node in range(graph.number_of_nodes())}
     for _ in range(num_iter):
-        for node in graph.graph.keys():
+        prevWeights = nodeWeights
+        for node in range(graph.number_of_nodes()):
             new_score = 0
-            for edge in graph.graph[node]:
-                #𝜖/n + (1 − 𝜖)∑ (v′,v)∈E Score(v′)/out-deg(v′)
-                new_score +=  nodeWeights[edge] / graph.outedges[edge]
-            nodeWeights[node] = (eps / graph.num_of_nodes) + (1-eps) * new_score
+            for edge in graph.in_link(node):
+                #𝜖/n + (1 − 𝜖)∑ (v′,v)∈E Score(v′)/out-deg(v′), v' is node pointing to v
+                new_score +=  prevWeights[edge] / graph.outedges[edge]
+            nodeWeights[node] = (eps / graph.number_of_nodes()) + (1-eps) * new_score
             
     print(sum(nodeWeights.values()))
     return nodeWeights
@@ -179,7 +188,7 @@ def weightScatterPlot(weights):
 
 def makeNXGraph(graph, weights):
     G = nx.Graph()
-    G.add_nodes_from([i for i in range(graph.num_of_nodes)])
+    G.add_nodes_from([i for i in range(graph.num_of_nodes())])
     colors = ["b"] * 4039
 
     for i, w in enumerate(weights):
@@ -198,17 +207,17 @@ def makeNXGraph(graph, weights):
 
 
 #6a
-# g15 = graph_15_1_left()
-# print(g15.graph)
-# nw = scaled_page_rank(g15, 10)
-# print(nw)
+g15 = graph_15_1_left()
+print(g15.graph)
+nw = scaled_page_rank(g15, 10)
+print(nw)
 
-# # print()
+# print()
 
-# g15 = graph_15_1_right()
-# print(g15.graph)
-# nw = scaled_page_rank(g15, 10)
-# print(nw)
+g15 = graph_15_1_right()
+print(g15.graph)
+nw = scaled_page_rank(g15, 10)
+print(nw)
 
 # 7b
-question8b()
+# question8b()
