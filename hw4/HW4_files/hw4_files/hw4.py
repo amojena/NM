@@ -106,30 +106,50 @@ def graph_15_2():
 
 def extra_graph_1():
     ''' This method, should construct and return a DirectedGraph of your choice with at least 10 nodes'''    
-    from random import randint
     ex_g_1 = DirectedGraph(10)
 
-    # TODO: add edges
+    for i in range(4):
+        ex_g_1.add_edge(i, 4)
+        ex_g_1.add_edge(4, i)
     
+    for i in range(6,10):
+        ex_g_1.add_edge(i, 5)
+        ex_g_1.add_edge(5, i)
+        
+    ex_g_1.add_edge(4, 5)
+    ex_g_1.add_edge(5, 4)
+
     return ex_g_1
     
 
 # This dictionary should contain the expected nodeWeights for each node when running the scaled page rank on the extra_graph_1 output
 # with epsilon = 0.07 and num_iter = 20.
-extra_graph_1_nodeWeights = {1 : 0, 2: 0, 3 : 0, 4: 0, 5 : 0, 6: 0, 7 : 0, 8: 0, 9 : 0}
+extra_graph_1_nodeWeights = {0: 0.05850659257528375, 1: 0.05834894986571982, 2: 0.05834894986571982, 3: 0.05834894986571982, 4: 0.2760696229339776, 5: 0.27569031648630987, 6: 0.05842509855392206, 7: 0.05827839886645363, 8: 0.05827839886645363, 9: 0.05827839886645363}
 
 def extra_graph_2():
     ''' This method, should construct and return a DirectedGraph of your choice with at least 10 nodes'''    
-    from random import randint
-    ex_g_2 = DirectedGraph(12)
+    ex_g_2 = DirectedGraph(11)
 
-    # TODO: add edges
+    for i in range(4):
+        ex_g_2.add_edge(i, 4)
+        ex_g_2.add_edge(4, i)
     
+    for i in range(6,10):
+        ex_g_2.add_edge(i, 5)
+        ex_g_2.add_edge(5, i)
+        
+    ex_g_2.add_edge(4, 5)
+    ex_g_2.add_edge(5, 4)
+    ex_g_2.add_edge(10, 4)
+    ex_g_2.add_edge(10, 5)
+    ex_g_2.add_edge(4, 10)
+    ex_g_2.add_edge(5, 10)
+
     return ex_g_2
 
 # This dictionary should contain the expected nodeWeights for each node when running the scaled page rank on the extra_graph_2 output
 # with epsilon = 0.07 and num_iter = 20.
-extra_graph_2_nodeWeights = {1 : 0, 2: 0, 3 : 0, 4: 0, 5 : 0, 6: 0, 7 : 0, 8: 0, 9 : 0}
+extra_graph_2_nodeWeights = {0: 0.048589372724965024, 1: 0.048445719917914604, 2: 0.048445719917914604, 3: 0.048445719917914604, 4: 0.27149731325340803, 5: 0.2712171002311596, 6: 0.04853916676349514, 7: 0.048402286899466095, 8: 0.048402286899466095, 9: 0.048402286899466095, 10: 0.09048437045374433}
 
 
 def facebook_graph(filename = "facebook_combined.txt"):
